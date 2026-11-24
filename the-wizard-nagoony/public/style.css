@@ -1,0 +1,35 @@
+:root{color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html,body{margin:0;height:100%;background:#0b0618;color:#e9e3ff;font-family:'Trebuchet MS',system-ui,sans-serif;overflow:hidden;overscroll-behavior:none;touch-action:none}
+#wrap{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+#stage{position:relative;line-height:0}
+canvas{display:block;background:#120a2a;border-radius:14px;box-shadow:0 0 40px rgba(150,80,255,.35);touch-action:none}
+#hint{font-size:13px;opacity:.7;text-align:center;padding:0 8px}
+#pauseBtn{position:absolute;top:10px;right:10px;width:52px;height:52px;border-radius:50%;border:3px solid #9a6bff;background:radial-gradient(circle at 35% 28%,rgba(130,90,230,.8),rgba(30,14,66,.82));color:#efe6ff;touch-action:none;z-index:3;cursor:pointer;display:none;padding:0;box-shadow:0 0 14px rgba(154,107,255,.55),inset 0 0 0 2px rgba(255,255,255,.08),inset 0 -6px 12px rgba(0,0,0,.3);align-items:center;justify-content:center}
+#pauseBtn svg{width:46%;height:46%;display:block}
+#pauseBtn:hover{filter:brightness(1.2)}
+.cl{display:none;position:absolute;bottom:8px;gap:14px;z-index:2;line-height:1}
+#ctrlL{left:10px}
+#ctrlR{right:10px}
+.cl button{--c:#9a6bff;--g:rgba(154,107,255,.55);position:relative;width:clamp(64px,22vh,100px);height:clamp(64px,22vh,100px);border-radius:50%;border:3px solid var(--c);background:radial-gradient(circle at 35% 28%,rgba(130,90,230,.78),rgba(30,14,66,.84));color:#efe6ff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;touch-action:none;padding:0;box-shadow:0 0 16px var(--g),inset 0 0 0 2px rgba(255,255,255,.08),inset 0 -8px 14px rgba(0,0,0,.32);transition:transform .06s}
+.cl button::after{content:"";position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(255,255,255,.22);pointer-events:none}
+.cl button svg{width:46%;height:46%;display:block;filter:drop-shadow(0 0 5px var(--g))}
+.cl button small{font:700 clamp(9px,2.6vh,12px) 'Trebuchet MS',system-ui,sans-serif;letter-spacing:.04em;opacity:.92;text-transform:uppercase}
+.cl button.on{transform:scale(.93);background:radial-gradient(circle at 50% 40%,var(--c),rgba(60,30,120,.9));color:#fff;box-shadow:0 0 26px var(--c),inset 0 0 0 2px rgba(255,255,255,.2)}
+#bCast{--c:#35d6e6;--g:rgba(53,214,230,.6);color:#d6fbff;background:radial-gradient(circle at 35% 28%,rgba(40,150,175,.75),rgba(10,34,50,.86))}
+#bFire{--c:#ff9a3a;--g:rgba(255,154,58,.6);color:#ffe9cf;background:radial-gradient(circle at 35% 28%,rgba(190,90,30,.75),rgba(52,22,8,.88))}
+#bCast.on{color:#06222a}
+#bFire.on{color:#2a1204}
+body.touch #wrap{gap:0}
+body.touch #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+body.touch canvas{border-radius:0;box-shadow:none}
+body.touch #hint{display:none}
+body.touch .cl{display:flex}
+body.nogame .cl{display:none !important}
+body.touch #ctrlL{left:calc(12px + env(safe-area-inset-left));bottom:calc(8px + env(safe-area-inset-bottom))}
+body.touch #ctrlR{right:calc(12px + env(safe-area-inset-right));bottom:calc(8px + env(safe-area-inset-bottom))}
+body.touch #pauseBtn{top:calc(8px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right))}
+#rotate{display:none;position:fixed;inset:0;z-index:10;background:#0b0618;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px;font-size:20px;font-weight:700}
+#rotate .ico{width:84px;height:84px;color:#b99aff;animation:rot 2.4s ease-in-out infinite}
+@keyframes rot{0%,20%{transform:rotate(0)}60%,100%{transform:rotate(-90deg)}}
+body.touch.portrait #rotate{display:flex}

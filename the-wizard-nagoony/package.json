@@ -1,0 +1,13 @@
+{
+  "name": "the-wizard-nagoony",
+  "version": "1.0.0",
+  "description": "The Wizard Nagoony – Endless-Runner im Browser (Canvas, ohne Framework)",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "build:single": "node build.js --single",
+    "start": "node build.js && node tools/serve.js",
+    "test": "node build.js && node tools/sim-test.js"
+  },
+  "engines": { "node": ">=18" }
+}

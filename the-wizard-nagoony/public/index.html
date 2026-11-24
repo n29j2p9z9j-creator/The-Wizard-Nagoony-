@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>The Wizard Nagoony</title>
+<meta name="theme-color" content="#0b0618">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Nagoony">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="The Wizard Nagoony – ein Zauberer auf dem Motorrad im Browser-Spiel.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+<div id="stage">
+<canvas id="c" aria-label="The Wizard Nagoony – Spiel"></canvas>
+<button id="pauseBtn" tabindex="-1" aria-label="Pause"></button>
+<div class="cl" id="ctrlL">
+<button id="bDuck" tabindex="-1" aria-label="Runter"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12 L24 25 L37 12 M11 26 L24 39 L37 26"/></svg><small>Runter</small></button>
+<button id="bJump" tabindex="-1" aria-label="Hoch"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 36 L24 23 L37 36 M11 22 L24 9 L37 22"/></svg><small>Hoch</small></button>
+</div>
+<div class="cl" id="ctrlR">
+<button id="bFire" tabindex="-1" aria-label="Feuerball"><svg viewBox="0 0 48 48"><path fill="currentColor" d="M24 3 C26 12 37 16 37 29 C37 37.5 31 44 24 44 C17 44 11 37.5 11 29 C11 24 13.5 20.5 16.5 17.5 C17 22 19 24 21.5 24 C20.5 16.5 21 9 24 3 Z"/><path fill="#fff3c4" d="M24 26 C27.5 30 30.5 31.5 30.5 36 C30.5 39.5 27.6 41.5 24 41.5 C20.4 41.5 17.5 39.5 17.5 36 C17.5 32 20.5 30 24 26 Z"/></svg><small>Feuer</small></button>
+<button id="bCast" tabindex="-1" aria-label="Nagoony"><svg viewBox="0 0 48 48" fill="currentColor"><path d="M21 7 L25.2 21 L39 25 L25.2 29 L21 43 L16.8 29 L3 25 L16.8 21 Z"/><path d="M38 3 L39.7 8.3 L45 10 L39.7 11.7 L38 17 L36.3 11.7 L31 10 L36.3 8.3 Z"/></svg><small>Nagoony</small></button>
+</div>
+<div id="hint">Leertaste / ↑ springen bzw. steigen · ↓ ducken bzw. sinken · N / X / → Zauber „Nagoony“ · F / C Feuerball · P Pause · M Ton</div>
+</div>
+<div id="rotate"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M22 38 H26"/></svg><div>Bitte drehe dein Gerät<br>ins Querformat</div></div>
+<script src="game.js"></script>
+<script>
+/* Offline-Fähigkeit / „Zum Home-Bildschirm“ – nicht auf localhost, damit beim Entwickeln nichts veraltet */
+if ('serviceWorker' in navigator && location.protocol === 'https:' && !/^(localhost|127\.|\[::1\])/.test(location.hostname)) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
